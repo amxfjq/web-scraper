@@ -12,12 +12,22 @@ BOT_NAME = "richest_companies_by_revenue"
 SPIDER_MODULES = ["richest_companies_by_revenue.spiders"]
 NEWSPIDER_MODULE = "richest_companies_by_revenue.spiders"
 
+SCRAPEOPS_API_KEY = '54482970-dc2f-4d72-b0ba-f6fcdedc2544'
+
+SCRAPEOPS_FAKE_BROWSER_HEADERS_ENDPOINT = 'https://headers.scrapeops.io/v1/browser-headers'
+SCRAPEOPS_FAKE_BROWSER_HEADERS_ENABLED = True
+SCRAPEOPS_NUM_RESULTS = 50
+
+SCRAPEOPS_FAKE_USER_AGENTS_ENDPOINT = 'https://headers.scrapeops.io/v1/user-agents'
+SCRAPEOPS_FAKE_USER_AGENTS_ENABLED = True
+SCRAPEOPS_NUM_RESULTS = 50
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "richest_companies_by_revenue (+http://www.yourdomain.com)"
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -50,9 +60,10 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    "richest_companies_by_revenue.middlewares.RichestCompaniesByRevenueDownloaderMiddleware": 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+    'richest_companies_by_revenue.middlewares.FakeUserAgentMiddleware' : 400,
+    #"richest_companies_by_revenue.middlewares.RichestCompaniesByRevenueDownloaderMiddleware": 543,
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
