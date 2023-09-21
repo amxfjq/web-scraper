@@ -14,12 +14,16 @@ class RichestCompaniesByRevenueItem(scrapy.Item):
 class CompanyInfo(scrapy.Item):
     rank = scrapy.Field()
     company = scrapy.Field()
+    company_info = scrapy.Field()
     industry = scrapy.Field()
     revenue_in_millions = scrapy.Field()
     profit_in_millions = scrapy.Field()
     employees = scrapy.Field()
     headquarters = scrapy.Field()
     state_owned = scrapy.Field()
+
+
+class ExtraInfo(scrapy.Item):
     company_name = scrapy.Field()
     company_type = scrapy.Field()
     website = scrapy.Field()
